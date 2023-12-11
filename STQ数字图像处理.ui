@@ -1,0 +1,1389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>mainWindow</class>
+ <widget class="QMainWindow" name="mainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>557</width>
+    <height>478</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>STQ数字图像处理</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QLabel { 
+    color: blue ;
+    font-size:15px;
+	border:1px solid #1d649c;
+	font-family:微软雅黑;
+	background-color: #e7d8d8
+}
+
+QGroupBox {
+	font-family:华文彩云;
+	font-size:15px;
+}
+
+QPushButton {
+    border: 1px solid rgb(124, 124, 124);
+    background-color: qconicalgradient(cx:0.5, cy:0.5, angle:180, stop:0.49999 rgba(214, 214, 214, 255), stop:0.50001 rgba(236, 236, 236, 255));	
+    border-radius:30px;
+	font-family:华文彩云;
+	font-size:25px;
+}
+
+QPushButton:hover{
+    border: 1px solid #3C80B1;
+    background-color: qconicalgradient(cx:0.5, cy:0.5, angle:180, stop:0.49999 rgba(181, 225, 250, 255), stop:0.50001 rgba(222, 242, 251, 255));
+    border-radius:5px;
+}
+
+QPushButton:pressed{
+    border: 1px solid #5F92B2;
+    background-color: qconicalgradient(cx:0.5, cy:0.5, angle:180, stop:0.49999 rgba(134, 198, 233, 255), stop:0.50001 rgba(206, 234, 248, 255));
+    border-radius:5px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout" stretch="10,1,0,1">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,1">
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QGroupBox" name="original_group">
+        <property name="title">
+         <string>原始图片</string>
+        </property>
+        <widget class="QLabel" name="ori_pic">
+         <property name="geometry">
+          <rect>
+           <x>1</x>
+           <y>30</y>
+           <width>261</width>
+           <height>251</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="fixed_group">
+        <property name="title">
+         <string>处理后图片</string>
+        </property>
+        <widget class="QLabel" name="fixed_pic">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>30</y>
+           <width>261</width>
+           <height>251</height>
+          </rect>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="1,3">
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="origin_label">
+        <property name="text">
+         <string>原始图片路径:</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="origin_pic_path">
+        <property name="text">
+         <string>尚未选中图片yoo</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="0,3">
+      <property name="bottomMargin">
+       <number>10</number>
+      </property>
+      <item>
+       <widget class="QLabel" name="save_label">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>     图片保存路径:    </string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="save_pic_path">
+        <property name="text">
+         <string>默认保存路径在img文件夹下</string>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_4">
+      <property name="spacing">
+       <number>0</number>
+      </property>
+      <property name="topMargin">
+       <number>0</number>
+      </property>
+      <item>
+       <widget class="QPushButton" name="Open_btn">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>打开图片</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>557</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>CrossCursor</cursorShape>
+   </property>
+   <widget class="QMenu" name="file_menu">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>文件</string>
+    </property>
+    <addaction name="show_info"/>
+    <addaction name="grey_info"/>
+   </widget>
+   <widget class="QMenu" name="geo_menu">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>几何变换</string>
+    </property>
+    <widget class="QMenu" name="move">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="title">
+      <string>平移图片</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="move_menu"/>
+     <addaction name="move_change_menu"/>
+    </widget>
+    <widget class="QMenu" name="shrink">
+     <property name="title">
+      <string>图像缩小</string>
+     </property>
+     <addaction name="shrink_menu"/>
+     <addaction name="shrink_same_menu"/>
+    </widget>
+    <widget class="QMenu" name="shear">
+     <property name="title">
+      <string>错切</string>
+     </property>
+     <addaction name="shearx_menu"/>
+     <addaction name="sheary_menu"/>
+    </widget>
+    <widget class="QMenu" name="Magnification">
+     <property name="title">
+      <string>图像放大</string>
+     </property>
+     <addaction name="Magnification_N_menu"/>
+     <addaction name="Magnification_B_menu"/>
+    </widget>
+    <widget class="QMenu" name="rotate">
+     <property name="title">
+      <string>反变换图像旋转</string>
+     </property>
+     <addaction name="separator"/>
+     <addaction name="Rotate_Counterclockwise_menu"/>
+     <addaction name="Rotate_Clockwise_menu"/>
+    </widget>
+    <addaction name="move"/>
+    <addaction name="Mirror_H_menu"/>
+    <addaction name="Mirror_V_menu"/>
+    <addaction name="Central_symmetry_menu"/>
+    <addaction name="rotate"/>
+    <addaction name="shrink"/>
+    <addaction name="shear"/>
+    <addaction name="Magnification"/>
+   </widget>
+   <widget class="QMenu" name="denoising_menu">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>图像去噪相关</string>
+    </property>
+    <widget class="QMenu" name="Histogram_Equalization">
+     <property name="title">
+      <string>直方图均衡化</string>
+     </property>
+     <addaction name="Histogram_Equalization2_menu"/>
+     <addaction name="Histogram_Equalization_menu"/>
+    </widget>
+    <widget class="QMenu" name="Noise_menu">
+     <property name="title">
+      <string>随机给图片添加噪声</string>
+     </property>
+     <addaction name="Salt_And_Pepper_Noise_menu"/>
+     <addaction name="Gauss_Noise_menu"/>
+     <addaction name="Random_Noise_menu"/>
+    </widget>
+    <widget class="QMenu" name="Filter_menu">
+     <property name="title">
+      <string>图像滤波</string>
+     </property>
+     <addaction name="Black_And_White_Dot_Noise_Filtering_menu"/>
+     <addaction name="Gaussian_Blur_menu"/>
+     <addaction name="Average_Filtering_menu"/>
+     <addaction name="Median_Filtering_menu"/>
+     <addaction name="SNN_menu"/>
+     <addaction name="KNN_menu"/>
+    </widget>
+    <addaction name="ShowHistmenu"/>
+    <addaction name="Histogram_Equalization"/>
+    <addaction name="Binarization_menu"/>
+    <addaction name="Grey_Cutter_menu"/>
+    <addaction name="Noise_menu"/>
+    <addaction name="Filter_menu"/>
+   </widget>
+   <widget class="QMenu" name="sharp_menu">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>图像锐化</string>
+    </property>
+    <widget class="QMenu" name="one_sharpen_menu">
+     <property name="title">
+      <string>一阶锐化</string>
+     </property>
+     <addaction name="Horizontal_Sharpen_menu"/>
+     <addaction name="Vertical_Sharpen_menu"/>
+    </widget>
+    <widget class="QMenu" name="menuLaplacian">
+     <property name="title">
+      <string>Laplacian算子</string>
+     </property>
+     <addaction name="Laplacian_menu"/>
+     <addaction name="Laplacian2_menu"/>
+    </widget>
+    <addaction name="one_sharpen_menu"/>
+    <addaction name="Gradient_menu"/>
+    <addaction name="Robert_menu"/>
+    <addaction name="Sobel_menu"/>
+    <addaction name="Prewitt_menu"/>
+    <addaction name="menuLaplacian"/>
+    <addaction name="Wallis_menu"/>
+   </widget>
+   <widget class="QMenu" name="cut_menu">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="title">
+     <string>图像分割</string>
+    </property>
+    <addaction name="Gray_Histogram_Segmentation_menu"/>
+    <addaction name="Minimum_Variance_menu"/>
+    <addaction name="P_Parameter_menu"/>
+    <addaction name="Erosion_menu"/>
+    <addaction name="Inflation_menu"/>
+    <addaction name="Close_Operation_menu"/>
+    <addaction name="Open_Operation_menu"/>
+   </widget>
+   <addaction name="file_menu"/>
+   <addaction name="geo_menu"/>
+   <addaction name="denoising_menu"/>
+   <addaction name="sharp_menu"/>
+   <addaction name="cut_menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="show_info">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>显示位图信息</string>
+   </property>
+  </action>
+  <action name="move_menu">
+   <property name="text">
+    <string>不改变图片大小</string>
+   </property>
+  </action>
+  <action name="move_change_menu">
+   <property name="text">
+    <string>改变图片大小</string>
+   </property>
+  </action>
+  <action name="Mirror_H_menu">
+   <property name="text">
+    <string>水平镜像</string>
+   </property>
+  </action>
+  <action name="Mirror_V_menu">
+   <property name="text">
+    <string>垂直镜像</string>
+   </property>
+  </action>
+  <action name="Central_symmetry_menu">
+   <property name="text">
+    <string>中心对称</string>
+   </property>
+  </action>
+  <action name="shrink_menu">
+   <property name="text">
+    <string>任意比例缩小</string>
+   </property>
+  </action>
+  <action name="shrink_same_menu">
+   <property name="text">
+    <string>按相同比例缩小</string>
+   </property>
+  </action>
+  <action name="shearx_menu">
+   <property name="text">
+    <string>x_axis</string>
+   </property>
+  </action>
+  <action name="sheary_menu">
+   <property name="text">
+    <string>y_axis</string>
+   </property>
+  </action>
+  <action name="Magnification_N_menu">
+   <property name="text">
+    <string>双线性插值放大</string>
+   </property>
+  </action>
+  <action name="Magnification_B_menu">
+   <property name="text">
+    <string>最近邻插值放大</string>
+   </property>
+  </action>
+  <action name="ShowHistmenu">
+   <property name="text">
+    <string>显示灰度直方图</string>
+   </property>
+  </action>
+  <action name="Histogram_Equalization2_menu">
+   <property name="text">
+    <string>三个通道分别均衡化</string>
+   </property>
+  </action>
+  <action name="Histogram_Equalization_menu">
+   <property name="text">
+    <string>三个通道一起均衡化（不推荐）</string>
+   </property>
+  </action>
+  <action name="Binarization_menu">
+   <property name="text">
+    <string>二值化</string>
+   </property>
+  </action>
+  <action name="Grey_Cutter_menu">
+   <property name="text">
+    <string>灰度级切片</string>
+   </property>
+  </action>
+  <action name="Salt_And_Pepper_Noise_menu">
+   <property name="text">
+    <string>椒盐噪声</string>
+   </property>
+  </action>
+  <action name="Gauss_Noise_menu">
+   <property name="text">
+    <string>高斯噪声</string>
+   </property>
+  </action>
+  <action name="Random_Noise_menu">
+   <property name="text">
+    <string>随机噪声</string>
+   </property>
+  </action>
+  <action name="Black_And_White_Dot_Noise_Filtering_menu">
+   <property name="text">
+    <string>黑白噪声点滤波</string>
+   </property>
+  </action>
+  <action name="Gaussian_Blur_menu">
+   <property name="text">
+    <string>Gauss滤波</string>
+   </property>
+  </action>
+  <action name="Average_Filtering_menu">
+   <property name="text">
+    <string>均值滤波</string>
+   </property>
+  </action>
+  <action name="Median_Filtering_menu">
+   <property name="text">
+    <string>中值滤波</string>
+   </property>
+  </action>
+  <action name="SNN_menu">
+   <property name="text">
+    <string>SNN滤波</string>
+   </property>
+  </action>
+  <action name="KNN_menu">
+   <property name="text">
+    <string>KNN滤波</string>
+   </property>
+  </action>
+  <action name="Horizontal_Sharpen_menu">
+   <property name="text">
+    <string>水平方向的一阶锐化</string>
+   </property>
+  </action>
+  <action name="Vertical_Sharpen_menu">
+   <property name="text">
+    <string>垂直方向的一阶锐化</string>
+   </property>
+  </action>
+  <action name="Gradient_menu">
+   <property name="text">
+    <string>基于门限值的梯度锐化</string>
+   </property>
+  </action>
+  <action name="Robert_menu">
+   <property name="text">
+    <string>Robert算子</string>
+   </property>
+  </action>
+  <action name="Sobel_menu">
+   <property name="text">
+    <string>Sobel算子</string>
+   </property>
+  </action>
+  <action name="Prewitt_menu">
+   <property name="text">
+    <string>Prewitt算子</string>
+   </property>
+  </action>
+  <action name="Laplacian_menu">
+   <property name="text">
+    <string>普通Laplacian算子</string>
+   </property>
+  </action>
+  <action name="Laplacian2_menu">
+   <property name="text">
+    <string>最接近原图的Laplacian算子</string>
+   </property>
+  </action>
+  <action name="Wallis_menu">
+   <property name="text">
+    <string>Wallis算子</string>
+   </property>
+  </action>
+  <action name="Rotate_Counterclockwise_menu">
+   <property name="text">
+    <string>逆时针</string>
+   </property>
+  </action>
+  <action name="Rotate_Clockwise_menu">
+   <property name="text">
+    <string>顺时针</string>
+   </property>
+  </action>
+  <action name="grey_info">
+   <property name="text">
+    <string>图片灰度化</string>
+   </property>
+  </action>
+  <action name="Gray_Histogram_Segmentation_menu">
+   <property name="text">
+    <string>灰度直方图阈值分割</string>
+   </property>
+  </action>
+  <action name="Minimum_Variance_menu">
+   <property name="text">
+    <string>最小类内方差</string>
+   </property>
+  </action>
+  <action name="P_Parameter_menu">
+   <property name="text">
+    <string>p 参数生长</string>
+   </property>
+  </action>
+  <action name="Erosion_menu">
+   <property name="text">
+    <string>腐蚀</string>
+   </property>
+  </action>
+  <action name="Inflation_menu">
+   <property name="text">
+    <string>膨胀</string>
+   </property>
+  </action>
+  <action name="Close_Operation_menu">
+   <property name="text">
+    <string>闭运算</string>
+   </property>
+  </action>
+  <action name="Open_Operation_menu">
+   <property name="text">
+    <string>开运算</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>Open_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>OpenImg()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>300</x>
+     <y>426</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>443</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>show_info</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Show_Pic_Info()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Horizontal_Sharpen_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Horizontal_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Vertical_Sharpen_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Vertical_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Gradient_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Gradient_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Robert_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Robert_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Sobel_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Sobel_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Prewitt_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Prewitt_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Wallis_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Wallis_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Laplacian_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Laplacian_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Laplacian2_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Laplacian2_Sharpen_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ShowHistmenu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>ShowHist_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Histogram_Equalization2_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Histogram_Equalization2_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Histogram_Equalization_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Histogram_Equalization_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Binarization_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Binarization_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Grey_Cutter_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Grey_Cutter_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Salt_And_Pepper_Noise_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Generate_Salt_And_Pepper_Noise_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Gauss_Noise_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Generate_Gauss_Noise_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Random_Noise_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Generate_Random_Noise_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Black_And_White_Dot_Noise_Filtering_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Black_And_White_Dot_Noise_Filtering_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Gaussian_Blur_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Gaussian_Blur_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Average_Filtering_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Average_Filtering_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Median_Filtering_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Median_Filtering_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SNN_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>SNN_Filtering_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>KNN_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>KNN_Filtering_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>show_info</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Show_Info_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>move_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Move_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>move_change_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Move_Without_Changing_Size_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Mirror_H_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Mirror_Horizontally_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Mirror_V_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Mirror_Vertically_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Central_symmetry_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Central_symmetry_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Rotate_Counterclockwise_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Rotate_Counterclockwise_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Rotate_Clockwise_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Rotate_Clockwise_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shrink_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Shrink_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shrink_same_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Shrink_Same_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>shearx_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Shear_Mapping_X_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sheary_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Shear_Mapping_Y_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Magnification_B_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Bilinear_Interpolation_Magnification_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Magnification_N_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Nearest_Interpolation_Magnification_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>grey_info</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Grey_Pic_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Gray_Histogram_Segmentation_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Gray_Histogram_Segmentation_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Minimum_Variance_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Minimum_Variance_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>P_Parameter_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>P_Parameter_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Erosion_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Erosion_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Inflation_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Inflation_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Close_Operation_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Close_Operation_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>Open_Operation_menu</sender>
+   <signal>triggered()</signal>
+   <receiver>mainWindow</receiver>
+   <slot>Open_Operation_slot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>238</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>OpenImg()</slot>
+  <slot>Show_Pic_Info()</slot>
+  <slot>Horizontal_Sharpen_slot()</slot>
+  <slot>Vertical_Sharpen_slot()</slot>
+  <slot>Gradient_Sharpen_slot()</slot>
+  <slot>Robert_Sharpen_slot()</slot>
+  <slot>Sobel_Sharpen_slot()</slot>
+  <slot>Prewitt_Sharpen_slot()</slot>
+  <slot>Laplacian_Sharpen_slot()</slot>
+  <slot>Laplacian2_Sharpen_slot()</slot>
+  <slot>Wallis_Sharpen_slot()</slot>
+  <slot>ShowHist_slot()</slot>
+  <slot>Histogram_Equalization2_slot()</slot>
+  <slot>Histogram_Equalization_slot()</slot>
+  <slot>Binarization_slot()</slot>
+  <slot>Grey_Cutter_slot()</slot>
+  <slot>Generate_Random_Noise_slot()</slot>
+  <slot>Generate_Salt_And_Pepper_Noise_slot()</slot>
+  <slot>Generate_Gauss_Noise_slot()</slot>
+  <slot>Black_And_White_Dot_Noise_Filtering_slot()</slot>
+  <slot>Gaussian_Blur_slot()</slot>
+  <slot>Average_Filtering_slot()</slot>
+  <slot>Median_Filtering_slot()</slot>
+  <slot>SNN_Filtering_slot()</slot>
+  <slot>KNN_Filtering_slot()</slot>
+  <slot>Show_Info_slot()</slot>
+  <slot>Move_slot()</slot>
+  <slot>Move_Without_Changing_Size_slot()</slot>
+  <slot>Mirror_Horizontally_slot()</slot>
+  <slot>Mirror_Vertically_slot()</slot>
+  <slot>Central_symmetry_slot()</slot>
+  <slot>Rotate_Counterclockwise_slot()</slot>
+  <slot>Rotate_Clockwise_slot()</slot>
+  <slot>Shrink_slot()</slot>
+  <slot>Shrink_Same_slot()</slot>
+  <slot>Shear_Mapping_Y_slot()</slot>
+  <slot>Shear_Mapping_X_slot()</slot>
+  <slot>Nearest_Interpolation_Magnification_slot()</slot>
+  <slot>Bilinear_Interpolation_Magnification_slot()</slot>
+  <slot>Grey_Pic_slot()</slot>
+  <slot>Open_Operation_slot()</slot>
+  <slot>Close_Operation_slot()</slot>
+  <slot>Inflation_slot()</slot>
+  <slot>Erosion_slot()</slot>
+  <slot>P_Parameter_slot()</slot>
+  <slot>Minimum_Variance_slot()</slot>
+  <slot>Gray_Histogram_Segmentation_slot()</slot>
+ </slots>
+</ui>

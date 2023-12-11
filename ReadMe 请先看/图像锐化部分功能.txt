@@ -1,0 +1,10 @@
+1、水平方向的一阶锐化
+2、垂直方向的一阶锐化
+3、基于门限值的梯度锐化
+4、Robert算子
+5、Sobel算子
+6、Prewitt算子
+7、Laplacian算子
+    A 普通Laplacian算子
+    B 最接近原图的Laplacian算子
+8、Wallis算子
